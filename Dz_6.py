@@ -34,6 +34,10 @@ with open ('user.csv', 'r', encoding ="utf-8") as user,\
 
 if len(users) < len(hobbys):
     print (1)
-    users_hobby = dict (zip_longest(users,hobbys, fillvalue=None))
+else:
+    users_hobby = dict(zip_longest(users,hobbys, fillvalue=None))
     with open ('users_hobby_dict.txt', 'w') as f:
-        json.dump(users_hobby, f, ensure_asii=False)
+        json.dump(users_hobby, f)
+    with open ('users_hobby_dict.txt', 'r') as f:
+        rez=json.load(f)
+        print (rez)
